@@ -1,0 +1,70 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+
+        mavenCentral()
+
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.11.+'
+    }
+}
+
+task wrapper(type: Wrapper) {
+     gradleVersion = '1.10'
+}
+
+//apply plugin: 'com.android.application'
+apply plugin: 'android'
+
+
+repositories {
+    maven {
+        url 'https://oss.sonatype.org/content/repositories/snapshots/'
+    }
+    mavenCentral()
+}
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion '19.1'
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['src']
+            resources.srcDirs = ['src']
+            aidl.srcDirs = ['src']
+            renderscript.srcDirs = ['src']
+            res.srcDirs = ['res']
+            assets.srcDirs = ['assets']
+        }
+
+        androidTest.setRoot('tests')
+    }
+    packagingOptions {
+           exclude 'META-INF/LICENSE.txt'
+           exclude 'META-INF/NOTICE.txt'
+       }
+    defaultConfig {}
+    productFlavors {
+    }
+    buildTypes {
+    }
+}
+
+dependencies {
+
+    compile 'com.android.support:support-v4:19.1.0'
+    compile 'com.android.support:appcompat-v7:19.1.0'
+    //compile project(':baasbox-android-0.8.0')
+    compile 'com.baasbox:baasbox-android:0.8.+@aar'
+    compile files('libs/commons-lang3-3.3.2.jar')
+    compile files('libs/commons-codec/1.6/jars/commons-codec.jar')
+    compile files('libs/commons-codec/1.6/jars/commons-codec.jar.md5')
+    compile files('libs/commons-codec/1.6/jars/commons-codec.sha1')
+
+
+    //compile files('libs/baasbox-android-0.8.1.jar')
+
+}
