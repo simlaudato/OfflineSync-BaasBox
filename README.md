@@ -1,4 +1,4 @@
-# Offline Synchronizaion
+# Offline Synchronization
 
 This feature is now available in the BaasBox Android SDK.
 
